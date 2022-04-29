@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>To Do List</title>
+    <style>
+        body {
+            background-color: #eee;
+            text-transform: capitalize;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0px auto;
+            text-align: center;
+        }
+
+        .form,
+        #tasks,
+        #tasks>div {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .form,
+        #tasks {
+            background-color: #efc6c6;
+            margin-bottom: 20px;
+            padding: 20px;
+            width: 90%;
+        }
+
+        #tasks div {
+            width: calc(100% - 20px);
+            background-color: white;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        #tasks>div {
+            font-size: 28px;
+        }
+
+        input,
+        #tasks div {
+            border: none;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            padding: 12px;
+        }
+
+        input {
+            opacity: 0.4;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        input#input {
+
+            width: 120%;
+            padding: 0;
+            border-radius: 0px;
+            text-align: center;
+            font-size: 28px;
+            text-transform: capitalize;
+        }
+
+        input#input:out-of-range {
+            border-color: red;
+        }
+
+        input#add {
+            background-color: aliceblue;
+            width: 65%;
+            position: relative;
+            bottom: -22px;
+        }
+
+        #tasks>div:not(.Done) input#done {
+            border: 2px solid rgb(0 0 0 / 50%);
+            border-right-color: transparent;
+        }
+
+        input#delete {
+            background-color: red;
+        }
+
+
+
+        #add:hover,
+        #delete:hover,
+        #done:hover {
+            opacity: 1;
+        }
+
+
+
+        div#btnDiv input {
+            width: 50%;
+        }
+
+        div#btnDiv {
+            width: 80%;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 8px;
+        }
+
+        @media (max-width: 275px) {
+            .container {
+                width: 90%;
+            }
+
+            input#input {
+                width: 114%;
+                font-size: 14px;
+            }
+
+            div#btnDiv input {
+                width: 75%;
+            }
+
+            #tasks>div {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (min-width: 275px) and (max-width: 375px) {
+            .container {
+                width: 90%;
+            }
+
+            input#input {
+                width: 114%;
+                font-size: 20px;
+            }
+
+            div#btnDiv input {
+                width: 75%;
+            }
+
+            #tasks>div {
+                font-size: 20px !important;
+            }
+        }
+
+
+        /* Small Screens */
+        /* Small Mobile */
+
+        @media (max-width: 767px) {
+            .container {
+                width: 90%;
+            }
+
+            input#input {
+                width: 100%;
+                font-size: 24px;
+            }
+
+            div#btnDiv {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            #tasks>div {
+                font-size: 24px;
+            }
+        }
+
+        @media (min-width: 767px) and (max-width: 991px) {
+
+            .form,
+            #tasks {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            div#btnDiv {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            input#input {
+                font-size: 28px;
+            }
+
+            input,
+            #tasks div {
+                width: calc(135% /3);
+            }
+
+            #tasks>div {
+                font-size: 28px;
+            }
+        }
+
+
+        /* Medium Screens */
+
+        @media (min-width: 991px) and (max-width: 1100px) {
+            .container {
+                width: 90%;
+            }
+
+            input#input {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            input,
+            #tasks div {
+
+                width: calc(92% /2);
+            }
+
+            .form,
+            #tasks {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            div#btnDiv {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        /* Large Screens */
+
+        @media (min-width: 1100px) and (max-width: 1400px) {
+            .container {
+                width: 90%;
+            }
+
+            input#input {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            input,
+            #tasks div {
+
+                width: calc(92% /2);
+            }
+
+            .form,
+            #tasks {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            div#btnDiv {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <input type="text" id="input" maxlength="13" placeholder="Max 13 character">
+            <input type="submit" value="Add Task" id="add">
+        </div>
+        <div id="tasks"></div>
+    </div>
+    <script>
+        var inp = document.getElementById("input");
+        let add = document.getElementById("add");
+        let tasks = document.getElementById("tasks");
+        let del = document.getElementById("delete");
+        let local = window.localStorage;
+        // local.clear();
+        let intery = [];
+        let check = [];
+        let flag = false
+
+        let removeItem = function (arr = [], remItem = "item") {
+            /// arr is the array which will remmove reItem from it
+            let temp = []
+            arr.forEach((e, i) => {
+                if (e !== remItem)
+                    temp.push(e);
+            })
+            return temp;
+        }
+        let delteButton = function (div) {
+            let dele = document.createElement("input");
+            dele.setAttribute("type", "button");
+            dele.setAttribute("value", "Delete");
+            dele.id = "delete";
+            div.appendChild(dele);
+
+            dele.addEventListener("click", (e) => {
+
+                intery = removeItem(intery, dele.parentElement.parentElement.textContent)
+                localStorage.setItem("inp", JSON.stringify(intery));
+
+                check = removeItem(check, dele.parentElement.parentElement.textContent)
+                localStorage.setItem("DoneCheck", JSON.stringify(check));
+                dele.parentElement.parentElement.remove();
+            });
+        };
+        let doneButton = function (div, donee) {
+            let done = document.createElement("input");
+            done.setAttribute("type", "button");
+            done.setAttribute("value", "Done");
+            done.id = "done";
+            div.appendChild(done);
+            if (donee) {
+                done.style.backgroundColor = "#009688";
+                done.style.opacity = "1";
+                div.parentElement.classList.add("Done");
+            }
+            done.addEventListener("click", (e) => {
+
+                if (div.parentElement.classList.contains("Done")) {
+
+                    done.style.backgroundColor = "#ffffff";
+                    done.style.opacity = "0.4";
+                    div.parentElement.classList.remove("Done")
+                    check = removeItem(check, done.parentElement.parentElement.textContent)
+                    localStorage.setItem("DoneCheck", JSON.stringify(check));
+                } else {
+                    done.style.backgroundColor = "#009688";
+                    done.style.opacity = "1";
+                    div.parentElement.classList.add("Done");
+                    check.push(div.parentElement.textContent);
+                    localStorage.setItem("DoneCheck", JSON.stringify(check));
+                }
+            });
+        };
+
+        let newItem = function (data, index) {
+            // show the new item
+            let newdiv = document.createElement("div");
+            let dataItem = document.createTextNode(data);
+            let btnDiv = document.createElement("div");
+            btnDiv.id = "btnDiv"
+            tasks.appendChild(newdiv);
+            newdiv.classList.add(`Show-${index}`);
+            newdiv.appendChild(dataItem);
+            newdiv.appendChild(btnDiv);
+            if (check.includes(data)) {
+                doneButton(btnDiv, true);
+            }
+            else {
+
+                doneButton(btnDiv, false);
+            }
+
+            delteButton(btnDiv);
+        };
+
+
+
+        //get data from local storge
+        let getAllItems = function () {
+            // display data in local storge
+            if (intery.length !== 0) {
+                intery.forEach((ele, i) => {
+                    newItem(ele, i);
+                });
+            }
+        };
+
+
+        if (local.getItem("DoneCheck")) {
+            check = JSON.parse(local.getItem("DoneCheck"));
+        }
+        if (local.getItem("inp")) {
+            intery = JSON.parse(local.getItem("inp"));
+            getAllItems();
+        }
+
+
+        //add item and check thier is no frequence
+
+        add.addEventListener("click", () => {
+            if ((!(intery.includes(inp.value.toLowerCase()))) && (inp.value.trim() !== '')) {
+                intery.push(inp.value.toLowerCase());
+                localStorage.setItem("inp", JSON.stringify(intery));
+                newItem(inp.value, intery.length);
+            }
+            inp.value = '';
+        });
+
+        let input = document.getElementById("input");
+        input.setAttribute('maxlength', '20')
+        window.onload = function () {
+            window.onresize = function () {
+                if (window.innerWidth < 375) {
+                    input.setAttribute('maxlength', '25')
+                    input.setAttribute('placeholder', `max 25 character`)
+                }
+                else if (window.innerWidth < 991) {
+                    input.setAttribute('maxlength', '30')
+                    input.setAttribute('placeholder', `max 30 character`)
+                }
+                else if (window.innerWidth > 991) {
+                    input.setAttribute('maxlength', '35')
+                    input.setAttribute('placeholder', `max 35 character`)
+                }
+                console.log(input.attributes.item(2));
+            }
+        }
+    </script>
+</body>
+
+</html>
