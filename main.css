@@ -1,0 +1,292 @@
+body {
+	background-color: #eee;
+	text-transform: capitalize;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--container: 90%;
+	--item: 90%;
+	--btnItem: 50%;
+}
+
+.page {
+	width: 275px;
+	margin: 0px auto;
+	text-align: center;
+}
+.container {
+	width: var(--container);
+	margin: 0px auto;
+	text-align: center;
+}
+
+.form,
+#tasks,
+#tasks > div {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.form,
+#tasks {
+	width: var(--item);
+	margin: 0px auto;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #efc6c6;
+}
+
+#tasks div {
+	width: calc(90% - 20px);
+	background-color: white;
+	margin-bottom: 10px;
+	align-items: center;
+}
+#tasks div div {
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
+	justify-content: space-between;
+}
+#tasks div div p#p-data {
+	display: flex;
+	padding: 0px;
+	margin: 0px;
+	font-size: 15px;
+	justify-content: space-between;
+}
+
+#tasks > div {
+	font-size: 28px;
+}
+
+input,
+#tasks div {
+	border: none;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	padding: 12px;
+}
+
+input {
+	opacity: 0.4;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+input#input {
+	width: 120%;
+	padding: 0;
+	border-radius: 0px;
+	text-align: center;
+	font-size: 28px;
+	text-transform: capitalize;
+}
+
+input#input:out-of-range {
+	border-color: red;
+}
+
+input#add {
+	background-color: aliceblue;
+	width: 65%;
+	position: relative;
+	bottom: -22px;
+}
+
+#tasks > div:not(.Done) input#done {
+	border: 2px solid rgb(0 0 0 / 50%);
+	border-right-color: transparent;
+}
+
+input#delete {
+	background-color: red;
+}
+
+#add:hover,
+#delete:hover,
+#done:hover {
+	opacity: 1;
+}
+
+div#btnDiv input {
+	width: 50%;
+}
+
+div#btnDiv {
+	width: var(--btnItem);
+	padding: 8px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media (max-width: 275px) {
+	.page {
+		width: 275px;
+	}
+	.form,
+	#tasks {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	input#input {
+		width: 114%;
+		font-size: 14px;
+	}
+
+	div#btnDiv input {
+		width: 95%;
+		padding: 8px;
+		margin-bottom: 6px;
+		font-size: 10px;
+		justify-content: space-between;
+	}
+
+	#tasks > div {
+		font-size: 14px !important;
+	}
+}
+
+@media (min-width: 270px) and (max-width: 375px) {
+	.page {
+		width: 375px;
+	}
+	.form,
+	#tasks {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	input#input {
+		width: 114%;
+		font-size: 20px;
+	}
+
+	div#btnDiv input {
+		width: 95%;
+		padding: 8px;
+		margin-bottom: 6px;
+	}
+
+	#tasks > div {
+		font-size: 20px !important;
+	}
+}
+
+/* Small Screens */
+/* Small Mobile */
+
+@media (max-width: 767px) {
+	.page {
+		width: 767px;
+	}
+	.form,
+	#tasks {
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	input#input {
+		width: 100%;
+		font-size: 24px;
+	}
+
+	#tasks > div {
+		width: 70%;
+		font-size: 24px;
+	}
+
+	div#btnDiv {
+		width: 60;
+	}
+
+	div#btnDiv input {
+		margin-bottom: 6px;
+	}
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+	.page {
+		width: 991px;
+	}
+	.form,
+	#tasks {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	input#input {
+		font-size: 28px;
+	}
+
+	input,
+	#tasks div {
+		width: 45%;
+	}
+
+	#tasks > div {
+		font-size: 28px;
+	}
+}
+
+/* Medium Screens */
+
+@media (min-width: 991px) and (max-width: 1100px) {
+	.page {
+		width: 1100px;
+	}
+	input#input {
+		width: 100%;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	input,
+	#tasks div {
+		width: calc(92% / 2);
+	}
+
+	.form,
+	#tasks {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+}
+
+/* Large Screens */
+
+@media (min-width: 1100px) {
+	.page {
+		width: 1200px;
+	}
+	input#input {
+		width: 100%;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	input,
+	#tasks div {
+		width: calc(92% / 2);
+	}
+
+	.form,
+	#tasks {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+}
