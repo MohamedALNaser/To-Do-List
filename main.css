@@ -281,8 +281,8 @@ div#btnDiv {
 	}
 	input#input {
 		width: 100%;
-		flex-direction: row;
 		flex-wrap: wrap;
+		flex-direction: row;
 		justify-content: space-evenly;
 	}
 
