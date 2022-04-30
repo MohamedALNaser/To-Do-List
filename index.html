@@ -360,6 +360,7 @@
             newdiv.classList.add(`Show-${index}`);
             newdiv.appendChild(dataItem);
             newdiv.appendChild(btnDiv);
+            newdiv.style.order = `-${index}`
             if (check.includes(data)) {
                 doneButton(btnDiv, true);
             }
@@ -399,7 +400,7 @@
             if ((!(intery.includes(inp.value.toLowerCase()))) && (inp.value.trim() !== '')) {
                 intery.push(inp.value.toLowerCase());
                 localStorage.setItem("inp", JSON.stringify(intery));
-                newItem(inp.value, intery.length);
+                newItem(inp.value, intery.length - 1);
             }
             inp.value = '';
         });
