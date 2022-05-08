@@ -1,0 +1,43 @@
+@media (max-width: 375px) {
+	.page {
+		min-width: 250px;
+		width: 95%;
+		max-width: 350px;
+	}
+	.conainer {
+		padding: 0;
+	}
+	.form,
+	#tasks,
+	#DeletedDiv {
+		width: 95%;
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+	.form input#input {
+		width: 75%;
+	}
+	.form .btn {
+		width: 75%;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.form .btn input {
+		width: 100%;
+		margin-bottom: 8px;
+	}
+	div#btnDiv input {
+		width: 75%;
+		margin-bottom: 15px;
+	}
+}
+@media (min-width: 375px) and (max-width: 576px) {
+	.page {
+		width: 375px;
+	}
+}
+@media (min-width: 576px) and (max-width: 768px) {
+	.page {
+		width: 550px;
+	}
+}
