@@ -1,3 +1,8 @@
+/* start global */
+* {
+	padding: 0;
+	margin: 0;
+}
 body {
 	background-color: #eee;
 	text-transform: capitalize;
@@ -6,77 +11,31 @@ body {
 }
 
 :root {
-	--container: 90%;
-	--item: 90%;
-	--btnItem: 50%;
-}
-
-.page {
-	width: 260px;
-	margin: 0px auto;
-	text-align: center;
-}
-.container {
-	width: var(--container);
-	margin: 0px auto;
-	text-align: center;
+	--container: 95%;
+	--item: 95%;
+	--btnItem: 75%;
 }
 
 .form,
 #tasks,
-#tasks > div {
+.form .btn,
+#tasks > div,
+#DeletedDiv > div {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	flex-wrap: wrap;
 }
-
-.form,
-#tasks {
-	width: var(--item);
-	margin: 0px auto;
-	padding: 20px;
-	margin-bottom: 20px;
-	background-color: #efc6c6;
-}
-
-#tasks div {
-	width: calc(90% - 20px);
-	background-color: white;
-	margin-bottom: 10px;
-	align-items: center;
-}
-#tasks div div#div-data {
-	width: 60%;
-	display: flex;
-	padding: 0px;
-	margin: 0px;
-	font-size: 15px;
-	justify-content: space-between;
-}
-#tasks div div p#p-data {
-	width: 100%;
-	display: flex;
-	padding: 0px;
-	margin: 0px;
-	font-size: 15px;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-#tasks div div p#p-data span {
-	margin-bottom: 8px;
-}
-
-#tasks > div {
-	font-size: 28px;
-}
-
 input,
-#tasks div {
+div {
+	padding: 12px;
 	border: none;
 	border: 2px solid transparent;
 	border-radius: 4px;
-	padding: 12px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
 }
 
 input {
@@ -85,22 +44,91 @@ input {
 	cursor: pointer;
 }
 
-input#input {
-	width: 120%;
+/* end global */
+.page {
+	min-width: 250px;
+	max-width: 1400px;
+	width: var(--container);
+	margin: 0px auto;
 	padding: 0;
-	border-radius: 0px;
+	text-align: center;
+	transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+}
+.container {
+	width: var(--container);
+	margin: 0px auto;
+	padding: 0;
+	text-align: center;
+}
+
+.form {
+	flex-direction: row;
+	justify-content: center;
+}
+.form .btn {
+	width: 75%;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+input#input {
+	width: 45%;
 	text-align: center;
 	font-size: 28px;
 	text-transform: capitalize;
 }
 
-input#add {
+.form .btn input {
 	background-color: aliceblue;
-	width: 65%;
-	position: relative;
-	bottom: -22px;
+	width: calc((100% - 30px) / 3);
+	padding: 20px;
 }
 
+input#Undo {
+	cursor: no-drop;
+}
+/*  tasks div style */
+.form,
+#tasks,
+#DeletedDiv {
+	width: var(--item);
+	margin: 0px auto;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #efc6c6;
+}
+#tasks,
+#DeletedDiv {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+#tasks div,
+#DeletedDiv div {
+	width: calc((90% - 20px) / 2);
+	background-color: white;
+	margin-bottom: 10px;
+	align-items: center;
+	font-size: 28px;
+	padding: 12px;
+}
+
+#tasks > div,
+#DeletedDiv > div {
+	width: 274px;
+}
+#tasks > div > p,
+#DeletedDiv > div > p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-word;
+}
 #tasks > div:not(.Done) input#done {
 	border: 2px solid rgb(0 0 0 / 50%);
 	border-right-color: transparent;
@@ -123,184 +151,29 @@ div#btnDiv input {
 div#btnDiv {
 	width: var(--btnItem);
 	padding: 8px;
+	margin-top: 18px;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 }
 
-@media (max-width: 275px) {
-	.page {
-		width: 260px;
-	}
-	.form,
-	#tasks {
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-	input#input {
-		width: 114%;
-		font-size: 14px;
-	}
-
-	div#btnDiv input {
-		width: 95%;
-		padding: 8px;
-		margin-bottom: 6px;
-		font-size: 10px;
-		justify-content: space-between;
-	}
-
-	#tasks > div {
-		font-size: 14px !important;
-	}
+#tasks div div#div-data,
+#DeletedDiv div div#div-data {
+	width: 75%;
+	display: flex;
+	font-size: 15px;
+	justify-content: space-evenly;
 }
-
-@media (max-width: 375px) {
-	#tasks div div p#p-data {
-		justify-content: center;
-		flex-wrap: wrap;
-	}
+#tasks div div p#p-data,
+#DeletedDiv div div p#p-data {
+	width: 100%;
+	display: flex;
+	font-size: 15px;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
-@media (min-width: 270px) and (max-width: 375px) {
-	.page {
-		width: 270px;
-	}
-	.form,
-	#tasks {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-
-	input#input {
-		width: 114%;
-		font-size: 20px;
-	}
-
-	div#btnDiv input {
-		width: 95%;
-		padding: 8px;
-		margin-bottom: 6px;
-	}
-
-	#tasks > div {
-		font-size: 20px !important;
-	}
+#tasks div div p#p-data span,
+#DeletedDiv div div p#p-data span {
+	margin-bottom: 8px;
 }
-
-/* Small Screens */
-/* Small Mobile */
-
-@media (min-width: 375px) and (max-width: 767px) {
-	.page {
-		width: 375px;
-	}
-	.form,
-	#tasks {
-		flex-wrap: wrap;
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-	input#input {
-		width: 100%;
-		font-size: 24px;
-	}
-
-	#tasks > div {
-		width: 70%;
-		font-size: 24px;
-	}
-
-	div#btnDiv {
-		width: 60;
-	}
-
-	div#btnDiv input {
-		margin-bottom: 6px;
-	}
-}
-
-@media (min-width: 767px) and (max-width: 991px) {
-	.page {
-		width: 767px;
-	}
-	.form,
-	#tasks {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-
-	input#input {
-		font-size: 28px;
-	}
-
-	input,
-	#tasks div {
-		width: 45%;
-	}
-
-	#tasks > div {
-		font-size: 28px;
-	}
-}
-
-/* Medium Screens */
-
-@media (min-width: 991px) and (max-width: 1100px) {
-	.page {
-		width: 991px;
-	}
-	input#input {
-		width: 100%;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-
-	input,
-	#tasks div {
-		width: calc(92% / 2);
-	}
-
-	.form,
-	#tasks {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-}
-
-/* Large Screens */
-
-@media (min-width: 1100px) {
-	.page {
-		width: 1100px;
-	}
-	input#input {
-		width: 100%;
-		flex-wrap: wrap;
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-	input,
-	#tasks div {
-		width: calc(92% / 2);
-	}
-
-	.form,
-	#tasks {
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-evenly;
-	}
-}
-
-@media (min-width: 1400px) {
-	.page {
-		width: 1400px;
-	}
-}
+/* end of tasks div style */
