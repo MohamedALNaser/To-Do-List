@@ -25,6 +25,10 @@ body {
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 margin-right: 0.5em;
+                &:focus {
+                    outline-color: #009688;
+                    border-color: #009688;
+                }
             }
             .btn {
                 input {

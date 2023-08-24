@@ -25,6 +25,10 @@ body {
   border-radius: 4px;
   margin-right: 0.5em;
 }
+.page .container .form #input:focus {
+  outline-color: #009688;
+  border-color: #009688;
+}
 .page .container .form .btn input {
   padding: 0.5em;
   border: 1px solid #ccc;
