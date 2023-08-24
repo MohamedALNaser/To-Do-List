@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>To Do List</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="Screens.css" media="(min-width: 767px) and (max-width: 1400px)" />
-    <link rel="stylesheet" href="Mobile.css" media="(min-width: 260px) and (max-width: 767px)" />
-    <link rel="stylesheet" href="smallMobile.css" media="(min-width: 270px) and (max-width: 375px)" />
     <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,11 +20,15 @@
                     <input type="button" value="Add" id="add">
                     <input type="button" value="Remove" id="remove" style="display: none;">
                     <input type="button" value="Deleted" id="Deleted" title="Show Deleted">
-                    <input type="button" value="Undo" id="Undo" title="Not Work Yet">
+                    <input type="button" value="clear" id="clear" title="Not Work Yet">
                 </div>
             </div>
-            <div id="tasks"></div>
-            <div id="DeletedDiv" style="display: none;"></div>
+            <div id="tasks">
+
+            </div>
+            <div id="DeletedDiv" style="display: none;">
+
+            </div>
         </div>
     </div>
     <script src="./master.js"></script>

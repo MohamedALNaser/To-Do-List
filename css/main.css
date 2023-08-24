@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+.page .container {
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+.page .container .form {
+  display: flex;
+  margin-bottom: 1em;
+}
+.page .container .form #input {
+  flex: 1;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+.page .container .form .btn input {
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #333;
+  margin-right: 0.5em;
+  margin-bottom: 5px;
+}
+.page .container #tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.page .container #tasks > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.page .container #tasks > div > p {
+  margin: 0;
+  display: block;
+  width: 93%;
+  max-width: calc(100% - 150px - 170px);
+  margin-right: 5px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+.page .container #tasks > div #btnDiv {
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page .container #tasks > div #btnDiv input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 13px;
+}
+.page .container #tasks > div #div-data {
+  width: 170px;
+  font-size: 0.8em;
+  text-align: right;
+  color: #999;
+}
+.page .container #tasks > div #div-data p#p-data {
+  display: flex;
+  justify-content: flex-start;
+}
+.page .container #tasks > div #div-data span#span-time {
+  margin-right: 4px;
+}
+
+#DeletedDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+#DeletedDiv > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#DeletedDiv > div > p {
+  margin: 0;
+  display: block;
+  width: 93%;
+  max-width: calc(100% - 150px - 170px);
+  margin-right: 5px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+#DeletedDiv > div #btnDiv {
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#DeletedDiv > div #btnDiv input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 13px;
+}
+#DeletedDiv > div #div-data {
+  width: 170px;
+  font-size: 0.8em;
+  text-align: right;
+  color: #999;
+}
+#DeletedDiv > div #div-data p#p-data {
+  display: flex;
+  justify-content: flex-start;
+}
+#DeletedDiv > div #div-data span#span-time {
+  margin-right: 4px;
+}/*# sourceMappingURL=main.css.map */
