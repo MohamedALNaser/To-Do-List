@@ -386,20 +386,19 @@ window.onload = function () {
       // input.setAttribute("placeholder", `max 35 character`);
     }
     if (window.innerWidth < 375) {
-      console.log("hi");
+      // console.log("hi");
     }
   };
-  let clear = document.getElementById("clear");
-  clear.addEventListener("click", () => {
-    if (clear.value === "cancel") {
-      inp.value = "";
-    } else if (clear.value === "Clear") {
-      localStorage.clear();
-
-      location.reload();
-    }
-  });
 };
+let clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+  if (clear.value === "cancel") {
+    inp.value = "";
+  } else if (clear.value === "clear") {
+    localStorage.clear();
+    location.reload();
+  }
+});
 
 deleted.style.transitionDuration = "0.3s";
 // let remove = document.getElementById("remove");
