@@ -39,10 +39,16 @@ body {
                 }
             }
         }
-        #tasks {
+        #tasks,
+        #DeletedDiv {
             display: flex;
             flex-direction: column;
             gap: 0.5em;
+            h2 {
+                text-align: center;
+                margin: 0 0 6px;
+                order: -10000000;
+            }
             >div {
                 display: flex;
                 justify-content: space-between;
@@ -53,8 +59,9 @@ body {
                 >p {
                     margin: 0;
                     display: block;
-                    width: 93%;
-                    max-width: calc(100% - 150px - 170px);
+                    width: 100%;
+                    max-width: calc(100% - 150px - 180px);
+                    min-width: 350px;
                     margin-right: 5px;
                     overflow: hidden;
                     word-wrap: break-word;
@@ -75,11 +82,20 @@ body {
                         font-size: 13px;
                     }
                 }
+                #done.active {
+                    background-color: #009688;
+                }
+                &.Done {
+                    background-color: #ccccccb0;
+                    #div-data {
+                        color: #000;
+                    }
+                }
                 #div-data {
-                    width: 170px;
-                    // padding-left: 10px;
+                    width: 180px;
                     font-size: 0.8em;
                     text-align: right;
+                    color: #000;
                     color: #999;
                     p#p-data {
                         display: flex;
@@ -94,54 +110,65 @@ body {
     }
 }
 
-#DeletedDiv {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    >div {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5em;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        >p {
-            margin: 0;
-            display: block;
-            width: 93%;
-            max-width: calc(100% - 150px - 170px);
-            margin-right: 5px;
-            overflow: hidden;
-            word-wrap: break-word;
-        }
-        #btnDiv {
-            width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            input {
-                padding: 0.5em;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                background-color: #0077ff;
-                color: #fff;
-                // margin-right: 0.5em;
-                font-size: 13px;
+@media screen and (max-width: 768px) {
+    .page {
+        .container {
+            #tasks,
+            #DeletedDiv {
+                >div {
+                    // flex-direction: column;
+                    flex-wrap: wrap;
+                    padding: 10px 8px;
+                    >p {
+                        display: block;
+                        width: 100%;
+                        max-width: 100%;
+                        min-width: 100%;
+                        padding-bottom: 6px;
+                        margin: 0 auto 10px;
+                        border-bottom: 1px solid #ccc;
+                    }
+                }
             }
         }
-        #div-data {
-            width: 170px;
-            // padding-left: 10px;
-            font-size: 0.8em;
-            text-align: right;
-            color: #999;
-            p#p-data {
-                display: flex;
-                justify-content: flex-start;
+    }
+    .page .container #tasks>div>p {
+        .page .container #DeletedDiv>div>p {
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .page .container #tasks>div,
+        .page .container #DeletedDiv>div {
+            justify-content: center;
+            #btnDiv {
+                margin-right: auto;
             }
-            span#span-time {
-                margin-right: 4px;
+        }
+    }
+    @media screen and (max-width: 380px) {
+        .page .container .form {
+            flex-direction: column;
+            // margin: 0;
+            border-bottom: 1px solid #ccc;
+            .btn {
+                padding: 5px 10px;
+                margin: 0 auto;
+                input {
+                    margin: 10px 0;
+                }
+            }
+        }
+        .page .container #tasks>div,
+        .page .container #DeletedDiv>div {
+            #btnDiv {
+                margin: 0 10px;
+                order: 1;
+            }
+            #div-data {
+                margin: 0 auto 10px;
+                padding-bottom: 6px;
+                border-bottom: 1px solid #ccc;
             }
         }
     }

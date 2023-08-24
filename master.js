@@ -6,7 +6,7 @@ let input = document.getElementById("input");
 let deleted = document.getElementById("Deleted");
 let deletedDiv = document.getElementById("DeletedDiv");
 let local = window.localStorage;
-tasks.classList.contains("deltedBefore");
+// tasks.classList.contains("deltedBefore");
 // local.clear();
 let intery = [];
 let check = [];
@@ -98,6 +98,7 @@ let delteButton = function (div, deletedBeforeFlage) {
   }
 };
 let doneButton = function (div, donee, delted) {
+  // div is btnDiv which is the parent of 3 buttons
   if (!delted) {
     let done = document.createElement("input");
     done.setAttribute("type", "button");
@@ -107,16 +108,15 @@ let doneButton = function (div, donee, delted) {
     done.parentElement.parentElement.children[0].style.cssText =
       " text-decoration: none;opacity: 1;";
     if (donee) {
-      done.style.backgroundColor = "#009688";
       done.style.opacity = "1";
       div.parentElement.classList.add("Done");
+      done.classList.add("active");
       done.parentElement.parentElement.children[0].style.cssText =
         " text-decoration: line-through;opacity: 0.5;";
     }
     done.addEventListener("click", (e) => {
       if (div.parentElement.classList.contains("Done")) {
-        done.style.backgroundColor = "#ffffff";
-        done.style.opacity = "0.4";
+        done.classList.remove("active");
         div.parentElement.classList.remove("Done");
         done.parentElement.parentElement.children[0].style.cssText =
           " text-decoration: none;opacity: 1;";
@@ -126,9 +126,10 @@ let doneButton = function (div, donee, delted) {
         );
         localStorage.setItem("DoneCheck", JSON.stringify(check));
       } else {
-        done.parentElement.parentElement.children[0].style.cssText =
-          " text-decoration: line-through;opacity: 0.5;";
-        done.style.backgroundColor = "#009688";
+        // done.parentElement.parentElement.children[0].style.cssText =
+        //   " text-decoration: line-through;opacity: 0.5;";
+        // done.style.backgroundColor = "#009688";
+        done.classList.add("active");
         done.style.opacity = "1";
         div.parentElement.classList.add("Done");
         check.push(div.parentElement.children[0].textContent);
@@ -138,7 +139,7 @@ let doneButton = function (div, donee, delted) {
   } else {
     let addDeletedBefore = document.createElement("input");
     addDeletedBefore.setAttribute("type", "button");
-    addDeletedBefore.setAttribute("value", "Add");
+    addDeletedBefore.setAttribute("value", "New");
     addDeletedBefore.id = "Done";
     div.appendChild(addDeletedBefore);
 
@@ -191,12 +192,12 @@ let editButton = function (div) {
       delete dataSetLocal[`${item}`];
       localStorage.setItem("data", JSON.stringify(dataSetLocal));
       inp.value = "";
-      add.value = "Add";
+      add.value = "New";
       Cancel.value = "Clear";
     });
     Cancel.value = "Cancel";
     Cancel.addEventListener("click", () => {
-      add.value = "Add";
+      add.value = "New";
       inp.value = "";
       Cancel.value = "Clear";
     });
@@ -401,37 +402,37 @@ window.onload = function () {
 };
 
 deleted.style.transitionDuration = "0.3s";
-let remove = document.getElementById("remove");
+// let remove = document.getElementById("remove");
 deleted.addEventListener("click", (e) => {
   if (deleted.value === "Deleted") {
-    add.style.display = "none";
-    remove.style.display = "inline";
+    // add.style.display = "none";
+    // remove.style.display = "inline";
     deleted.value = "Tasks";
     deleted.title = "Show Tasks";
     tasks.style.display = "none";
     deletedDiv.style.display = "flex";
-    remove.addEventListener("click", (e) => {
-      e.currentTarget;
-      deletedSetLocal.forEach((item, i) => {
-        deletedSetLocal = removeItem(deletedSetLocal, item);
+    // remove.addEventListener("click", (e) => {
+    //   e.currentTarget;
+    //   deletedSetLocal.forEach((item, i) => {
+    //     deletedSetLocal = removeItem(deletedSetLocal, item);
 
-        check = removeItem(check, item);
-        localStorage.setItem("DoneCheck", JSON.stringify(check));
+    //     check = removeItem(check, item);
+    //     localStorage.setItem("DoneCheck", JSON.stringify(check));
 
-        // the date is storing in object
-        delete dataSetLocal[`${item}`];
-        localStorage.setItem("data", JSON.stringify(dataSetLocal));
+    //     // the date is storing in object
+    //     delete dataSetLocal[`${item}`];
+    //     localStorage.setItem("data", JSON.stringify(dataSetLocal));
 
-        delete timeSetLocal[`${item}`];
-        localStorage.setItem("time", JSON.stringify(timeSetLocal));
+    //     delete timeSetLocal[`${item}`];
+    //     localStorage.setItem("time", JSON.stringify(timeSetLocal));
 
-        // item.currentTarget.parentElement.parentElement.remove();
-      });
-      localStorage.setItem("deletedSetLocal", JSON.stringify(deletedSetLocal));
-    });
+    //     // item.currentTarget.parentElement.parentElement.remove();
+    //   });
+    //   localStorage.setItem("deletedSetLocal", JSON.stringify(deletedSetLocal));
+    // });
   } else if (deleted.value === "Tasks") {
     add.style.display = "inline";
-    remove.style.display = "none";
+    // remove.style.display = "none";
     deleted.value = "Deleted";
     deleted.title = "Show Deleted";
     deletedDiv.style.display = "none";

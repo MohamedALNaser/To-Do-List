@@ -35,12 +35,20 @@ body {
   margin-right: 0.5em;
   margin-bottom: 5px;
 }
-.page .container #tasks {
+.page .container #tasks,
+.page .container #DeletedDiv {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
 }
-.page .container #tasks > div {
+.page .container #tasks h2,
+.page .container #DeletedDiv h2 {
+  text-align: center;
+  margin: 0 0 6px;
+  order: -10000000;
+}
+.page .container #tasks > div,
+.page .container #DeletedDiv > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,22 +56,26 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.page .container #tasks > div > p {
+.page .container #tasks > div > p,
+.page .container #DeletedDiv > div > p {
   margin: 0;
   display: block;
-  width: 93%;
-  max-width: calc(100% - 150px - 170px);
+  width: 100%;
+  max-width: calc(100% - 150px - 180px);
+  min-width: 350px;
   margin-right: 5px;
   overflow: hidden;
   word-wrap: break-word;
 }
-.page .container #tasks > div #btnDiv {
+.page .container #tasks > div #btnDiv,
+.page .container #DeletedDiv > div #btnDiv {
   width: 130px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.page .container #tasks > div #btnDiv input {
+.page .container #tasks > div #btnDiv input,
+.page .container #DeletedDiv > div #btnDiv input {
   padding: 0.5em;
   border: none;
   border-radius: 4px;
@@ -72,67 +84,87 @@ body {
   color: #fff;
   font-size: 13px;
 }
-.page .container #tasks > div #div-data {
-  width: 170px;
+.page .container #tasks > div #done.active,
+.page .container #DeletedDiv > div #done.active {
+  background-color: #009688;
+}
+.page .container #tasks > div.Done,
+.page .container #DeletedDiv > div.Done {
+  background-color: rgba(204, 204, 204, 0.6901960784);
+}
+.page .container #tasks > div.Done #div-data,
+.page .container #DeletedDiv > div.Done #div-data {
+  color: #000;
+}
+.page .container #tasks > div #div-data,
+.page .container #DeletedDiv > div #div-data {
+  width: 180px;
   font-size: 0.8em;
   text-align: right;
+  color: #000;
   color: #999;
 }
-.page .container #tasks > div #div-data p#p-data {
+.page .container #tasks > div #div-data p#p-data,
+.page .container #DeletedDiv > div #div-data p#p-data {
   display: flex;
   justify-content: flex-start;
 }
-.page .container #tasks > div #div-data span#span-time {
+.page .container #tasks > div #div-data span#span-time,
+.page .container #DeletedDiv > div #div-data span#span-time {
   margin-right: 4px;
 }
 
-#DeletedDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+@media screen and (max-width: 768px) {
+  .page .container #tasks > div,
+  .page .container #DeletedDiv > div {
+    flex-wrap: wrap;
+    padding: 10px 8px;
+  }
+  .page .container #tasks > div > p,
+  .page .container #DeletedDiv > div > p {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    padding-bottom: 6px;
+    margin: 0 auto 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .page .container #tasks > div > p .page .container #DeletedDiv > div > p {
+    text-align: center;
+  }
 }
-#DeletedDiv > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+@media screen and (max-width: 768px) and (max-width: 480px) {
+  .page .container #tasks > div,
+  .page .container #DeletedDiv > div {
+    justify-content: center;
+  }
+  .page .container #tasks > div #btnDiv,
+  .page .container #DeletedDiv > div #btnDiv {
+    margin-right: auto;
+  }
 }
-#DeletedDiv > div > p {
-  margin: 0;
-  display: block;
-  width: 93%;
-  max-width: calc(100% - 150px - 170px);
-  margin-right: 5px;
-  overflow: hidden;
-  word-wrap: break-word;
-}
-#DeletedDiv > div #btnDiv {
-  width: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-#DeletedDiv > div #btnDiv input {
-  padding: 0.5em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #0077ff;
-  color: #fff;
-  font-size: 13px;
-}
-#DeletedDiv > div #div-data {
-  width: 170px;
-  font-size: 0.8em;
-  text-align: right;
-  color: #999;
-}
-#DeletedDiv > div #div-data p#p-data {
-  display: flex;
-  justify-content: flex-start;
-}
-#DeletedDiv > div #div-data span#span-time {
-  margin-right: 4px;
+@media screen and (max-width: 768px) and (max-width: 380px) {
+  .page .container .form {
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+  }
+  .page .container .form .btn {
+    padding: 5px 10px;
+    margin: 0 auto;
+  }
+  .page .container .form .btn input {
+    margin: 10px 0;
+  }
+  .page .container #tasks > div #btnDiv,
+  .page .container #DeletedDiv > div #btnDiv {
+    margin: 0 10px;
+    order: 1;
+  }
+  .page .container #tasks > div #div-data,
+  .page .container #DeletedDiv > div #div-data {
+    margin: 0 auto 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+  }
 }/*# sourceMappingURL=main.css.map */
