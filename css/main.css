@@ -51,6 +51,61 @@ body {
   margin: 0 0 6px;
   order: -10000000;
 }
+.page .container #tasks h2 .sort,
+.page .container #DeletedDiv h2 .sort {
+  margin-left: 5px;
+  cursor: pointer;
+  padding-right: 10px;
+}
+.page .container #tasks h2 .sort #sortUp,
+.page .container #DeletedDiv h2 .sort #sortUp {
+  position: relative;
+  top: 5px;
+}
+.page .container #tasks h2 .sort #sortUp::before,
+.page .container #DeletedDiv h2 .sort #sortUp::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #999;
+}
+.page .container #tasks h2 .sort #sortDown,
+.page .container #DeletedDiv h2 .sort #sortDown {
+  position: relative;
+  top: 4px;
+}
+.page .container #tasks h2 .sort #sortDown::before,
+.page .container #DeletedDiv h2 .sort #sortDown::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #999;
+}
+.page .container #tasks h2 .sort #sortUp,
+.page .container #tasks h2 .sort #sortDown,
+.page .container #DeletedDiv h2 .sort #sortUp,
+.page .container #DeletedDiv h2 .sort #sortDown {
+  cursor: pointer;
+  margin-left: 0px;
+  font-size: 0.8em;
+  color: #999;
+}
+.page .container #tasks h2 .sort #sortUp.active,
+.page .container #tasks h2 .sort #sortDown.active,
+.page .container #DeletedDiv h2 .sort #sortUp.active,
+.page .container #DeletedDiv h2 .sort #sortDown.active {
+  color: #009688;
+}
 .page .container #tasks > div,
 .page .container #DeletedDiv > div {
   display: flex;
@@ -70,6 +125,8 @@ body {
   margin-right: 5px;
   overflow: hidden;
   word-wrap: break-word;
+  text-align: center;
+  direction: rtl;
 }
 .page .container #tasks > div #btnDiv,
 .page .container #DeletedDiv > div #btnDiv {
@@ -117,6 +174,23 @@ body {
 .page .container #DeletedDiv > div #div-data span#span-time {
   margin-right: 4px;
 }
+.page .container .print {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 0;
+  padding: 20px 0 0;
+  border-top: 1px solid #ccc;
+}
+.page .container .print input#print {
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 13px;
+}
 
 @media screen and (max-width: 768px) {
   .page .container #tasks > div,
@@ -133,6 +207,7 @@ body {
     padding-bottom: 6px;
     margin: 0 auto 10px;
     border-bottom: 1px solid #ccc;
+    text-align: center;
   }
   .page .container #tasks > div > p .page .container #DeletedDiv > div > p {
     text-align: center;

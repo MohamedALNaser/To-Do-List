@@ -6,7 +6,12 @@ let input = document.getElementById("input");
 let deleted = document.getElementById("Deleted");
 let deletedDiv = document.getElementById("DeletedDiv");
 let local = window.localStorage;
-// tasks.classList.contains("deltedBefore");
+
+let formDiv = document.querySelector(".form");
+let printdiv = document.querySelector(".print");
+let print = document.querySelector(".print input#print");
+let sort = document.querySelector("#tasks .sort");
+let sortDeleted = document.querySelector("#DeletedDiv .sort");
 // local.clear();
 let intery = [];
 let check = [];
@@ -406,6 +411,7 @@ deleted.addEventListener("click", (e) => {
   if (deleted.value === "Deleted") {
     // add.style.display = "none";
     // remove.style.display = "inline";
+    printdiv.style.display = "none";
     deleted.value = "Tasks";
     deleted.title = "Show Tasks";
     tasks.style.display = "none";
@@ -432,6 +438,7 @@ deleted.addEventListener("click", (e) => {
   } else if (deleted.value === "Tasks") {
     add.style.display = "inline";
     // remove.style.display = "none";
+    printdiv.style.display = "flex";
     deleted.value = "Deleted";
     deleted.title = "Show Deleted";
     deletedDiv.style.display = "none";
@@ -440,3 +447,24 @@ deleted.addEventListener("click", (e) => {
 });
 
 // add function to edit the item and save it in local storge and display it
+
+// print div tasks when click on print button
+print.addEventListener("click", () => {
+  formDiv.style.display = "none";
+  window.print();
+  formDiv.style.display = "flex";
+});
+sort.addEventListener("click", () => {
+  let tasksContent = document.querySelectorAll("#tasks > div");
+  tasksContent.forEach((e, i) => {
+    if (e.style.order < 0) e.style.order = i;
+    else if (e.style.order > 0) e.style.order = -i;
+  });
+});
+sortDeleted.addEventListener("click", () => {
+  let deletedContent = document.querySelectorAll("#DeletedDiv > div");
+  deletedContent.forEach((e, i) => {
+    if (e.style.order < 0) e.style.order = i;
+    else if (e.style.order > 0) e.style.order = -i;
+  });
+});

@@ -52,6 +52,55 @@ body {
                 text-align: center;
                 margin: 0 0 6px;
                 order: -10000000;
+                .sort {
+                    margin-left: 5px;
+                    cursor: pointer;
+                    padding-right: 10px;
+                    // made sortUp arrow
+                    #sortUp {
+                        position: relative;
+                        top: 5px;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: -5px;
+                            left: 0;
+                            width: 0;
+                            height: 0;
+                            border-left: 5px solid transparent;
+                            border-right: 5px solid transparent;
+                            border-bottom: 5px solid #999;
+                        }
+                    }
+                    // made sortDown arrow
+                    #sortDown {
+                        position: relative;
+                        top: 4px;
+                        // left: -4.5px;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 5px;
+                            left: 0;
+                            width: 0;
+                            height: 0;
+                            border-left: 5px solid transparent;
+                            border-right: 5px solid transparent;
+                            border-top: 5px solid #999;
+                        }
+                    }
+                    #sortUp,
+                    #sortDown {
+                        cursor: pointer;
+                        margin-left: 0px;
+                        font-size: 0.8em;
+                        color: #999;
+                    }
+                    #sortUp.active,
+                    #sortDown.active {
+                        color: #009688;
+                    }
+                }
             }
             >div {
                 display: flex;
@@ -69,6 +118,8 @@ body {
                     margin-right: 5px;
                     overflow: hidden;
                     word-wrap: break-word;
+                    text-align: center;
+                    direction: rtl;
                 }
                 #btnDiv {
                     width: 130px;
@@ -111,6 +162,23 @@ body {
                 }
             }
         }
+        .print {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0 0;
+            padding: 20px 0 0;
+            border-top: 1px solid #ccc;
+            input#print {
+                padding: 0.5em;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                background-color: #0077ff;
+                color: #fff;
+                font-size: 13px;
+            }
+        }
     }
 }
 
@@ -131,6 +199,7 @@ body {
                         padding-bottom: 6px;
                         margin: 0 auto 10px;
                         border-bottom: 1px solid #ccc;
+                        text-align: center;
                     }
                 }
             }
