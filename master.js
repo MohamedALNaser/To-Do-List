@@ -400,7 +400,13 @@ clear.addEventListener("click", () => {
   if (clear.value === "cancel") {
     inp.value = "";
   } else if (clear.value === "clear") {
-    localStorage.clear();
+    // clear all related to tasks local storge inp , data , time , DoneCheck , deletedSetLocal
+
+    localStorage.removeItem("inp");
+    localStorage.removeItem("data");
+    localStorage.removeItem("time");
+    localStorage.removeItem("DoneCheck");
+    localStorage.removeItem("deletedSetLocal");
     location.reload();
   }
 });
